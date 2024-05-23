@@ -12,11 +12,11 @@
         android:id="@+id/Btn3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="36dp"
-        android:text="Return"
+        android:layout_marginBottom="16dp"
+        android:text="Temperature"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.144"
+        app:layout_constraintHorizontal_bias="0.104"
         app:layout_constraintStart_toStartOf="parent" />
 
     <TextView
@@ -26,7 +26,7 @@
         android:layout_marginTop="59dp"
         android:layout_marginBottom="261dp"
         android:fontFamily="casual"
-        android:text="Cloudiness Images"
+        android:text="Cloudiness %"
         android:textColor="@color/black"
         android:textSize="34sp"
         android:textStyle="bold"
@@ -105,7 +105,7 @@
         app:srcCompat="@drawable/clear" />
 
 
-    />
+
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -113,7 +113,7 @@ public class Activity3 extends AppCompatActivity {
                     e.printStackTrace();
                 }
                 if(temp[0] == null){
-                    show.setText("Cannot able to find Weather");
+                    show.setText("Unable to find the weather");
                 }
 
             }
