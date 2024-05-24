@@ -64,7 +64,7 @@
         android:textColor="@color/black"
         android:textFontWeight="1000"
         android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@+id/button2"
+        app:layout_constraintBottom_toTopOf="@+id/buttonTo3"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -90,7 +90,7 @@
         app:layout_constraintTop_toBottomOf="@+id/enterBtn" />
 
     <Button
-        android:id="@+id/button2"
+        android:id="@+id/buttonTo3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="20dp"
@@ -101,7 +101,7 @@
         app:layout_constraintTop_toBottomOf="@+id/cityOutput" />
 
     <Button
-        android:id="@+id/button3"
+        android:id="@+id/buttonTo1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="13dp"

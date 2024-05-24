@@ -19,22 +19,14 @@ import android.content.Intent;
 
 
 public class Activity2 extends AppCompatActivity {
-    TextView cityName;
-    Button search;
-    TextView weatherDetails;
+    TextView cityInput, cityOutput;
+    Button enterBtn,buttonTo3,buttonTo1;
     String url;
-    Switch Cswitch;
-    Switch Fswitch;
-    public Button button2;
-    public Button button22;
-
-
-
+    Switch switchC, switchF;
 
     //this class gets the weather details, it is created below
     class getWeather extends AsyncTask<String, Void, String>{
         @Override
-
         protected String doInBackground(String... urls){
             //weather details are stored in result, ??StringBuilder??(learn)
             StringBuilder result = new StringBuilder();
@@ -54,7 +46,6 @@ public class Activity2 extends AppCompatActivity {
                     result.append(line).append("\n");
                 }
                 return result.toString();
-
             }catch(Exception e){
                 e.printStackTrace();
                 return null;
@@ -77,8 +68,12 @@ public class Activity2 extends AppCompatActivity {
                 weatherInfo = weatherInfo.replace("{","");
                 weatherInfo = weatherInfo.replace("}","");
                 weatherInfo = weatherInfo.replace(",","\n");
-                weatherInfo = weatherInfo.replace(":"," : ");
-                weatherDetails.setText(weatherInfo);
+                weatherInfo = weatherInfo.replace(":",": ");
+                weatherInfo = weatherInfo.replace("\""," ");
+                weatherInfo = weatherInfo.replace("sea_level","sea level(hPa) ");
+                weatherInfo = weatherInfo.replace("grnd_level","ground level(hPa) ");
+                cityOutput.setText(weatherInfo);
+
             }catch(Exception e){
                 e.printStackTrace();
             }
@@ -88,15 +83,16 @@ public class Activity2 extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_2);
-        cityName = findViewById(R.id.cityInput);
-        search = findViewById(R.id.enterBtn);
-        weatherDetails = findViewById(R.id.cityOutput);
-        Cswitch = findViewById(R.id.switchC);
-        Fswitch = findViewById(R.id.switchF);
+        cityInput = findViewById(R.id.cityInput);
+        enterBtn = findViewById(R.id.enterBtn);
+        cityOutput = findViewById(R.id.cityOutput);
+        switchC = findViewById(R.id.switchC);
+        switchF = findViewById(R.id.switchF);
+        buttonTo3 = (Button) findViewById(R.id.buttonTo3);
+        buttonTo1 = (Button) findViewById(R.id.buttonTo1);
 
-        button2 = (Button) findViewById(R.id.button2);
-
-        button2.setOnClickListener(new View.OnClickListener() {
+        //Event to switch from screen 2 to 3
+        buttonTo3.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(Activity2.this, Activity3.class);
@@ -104,9 +100,9 @@ public class Activity2 extends AppCompatActivity {
             }
         });
 
-        button22 = (Button) findViewById(R.id.button3);
+        //Event to switch from screen 2 to 1
 
-        button22.setOnClickListener(new View.OnClickListener() {
+        buttonTo1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(Activity2.this, MainActivity.class);
@@ -118,18 +114,16 @@ public class Activity2 extends AppCompatActivity {
 
         //stores the list of temperature details
         final String[] temp={""};
-
-        search.setOnClickListener(new View.OnClickListener(){
+        enterBtn.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v){
-               // Toast.makeText(Activity2.this, "The button has been clicked! ", Toast.LENGTH_SHORT).show();
-                String city = cityName.getText().toString();
+                String city = cityInput.getText().toString();
                 try{
                     //checks if input is not empty--------------------
                     if(city!=null){
-                            if (Cswitch.isChecked()) {
+                            if (switchC.isChecked()) {
                                 url = "https://api.openweathermap.org/data/2.5/weather?q=" + city + "&appid=66362104a5391009d4ff70db389e81b9&units=metric";
-                            } else if (Fswitch.isChecked()) {
+                            } else if (switchF.isChecked()) {
                                 url = "https://api.openweathermap.org/data/2.5/weather?q=" + city + "&appid=66362104a5391009d4ff70db389e81b9&units=imperial";
                             }
                     }else{
@@ -139,7 +133,6 @@ public class Activity2 extends AppCompatActivity {
                     //class that gets the weather details
                     getWeather task = new getWeather();
                     temp[0] = task.execute(url).get();
-
                 }catch(ExecutionException e){
                     e.printStackTrace();
                     //if you enter any invalid city, this will catch the error
@@ -147,7 +140,7 @@ public class Activity2 extends AppCompatActivity {
                     e.printStackTrace();
                 }
                 if(temp[0] == null){
-                    weatherDetails.setText("Unable to find the weather for your city Sorry try again!");
+                    cityOutput.setText("Unable to find the weather for your city Sorry try again!");
                 }
             }
         });

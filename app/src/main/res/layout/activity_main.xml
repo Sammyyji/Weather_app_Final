@@ -9,7 +9,7 @@
 
 
     <Button
-        android:id="@+id/homeBtn"
+        android:id="@+id/buttonTo2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="16dp"
@@ -18,6 +18,17 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.918"
         app:layout_constraintStart_toStartOf="parent" />
+
+    <ImageView
+        android:id="@+id/icon"
+
+        android:layout_width="273dp"
+        android:layout_height="416dp"
+        android:layout_marginTop="200dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
         android:id="@+id/cityInput"
@@ -40,7 +51,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="59dp"
         android:fontFamily="casual"
-        android:text="Weather Images"
+        android:text="Weather Icons"
         android:textColor="@color/black"
         android:textSize="34sp"
         android:textStyle="bold"
@@ -62,22 +73,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/cityInput" />
 
-    <TextView
-        android:id="@+id/cityOutput"
-        android:layout_width="339dp"
-        android:layout_height="153dp"
-        android:layout_marginStart="32dp"
-        android:layout_marginTop="348dp"
-        android:layout_marginEnd="32dp"
-        android:fontFamily="casual"
-        android:hint="Please work -_-"
-        android:text=""
-        android:textColor="@color/black"
-        android:textFontWeight="1000"
-        android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+
 
 
 
